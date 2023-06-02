@@ -1,0 +1,13 @@
+(footprint "Pad" (version 20211014) (generator pcbnew)
+  (layer "F.Cu")
+  (tedit 0)
+  (fp_text reference "REF**" (at 0 -1.27 unlocked) (layer "F.SilkS") hide
+    (effects (font (size 1 1) (thickness 0.15)))
+    (tstamp df154a3d-4d9b-4d06-bc5a-30761ca45e87)
+  )
+  (fp_text value "Pad" (at 0 0.635 unlocked) (layer "F.Fab") hide
+    (effects (font (size 1 1) (thickness 0.15)))
+    (tstamp bb1d3653-b63a-47c0-b6f8-d8d1da193c13)
+  )
+  (pad "1" thru_hole circle (at 0 0) (size 1.524 1.524) (drill 0.762) (layers *.Cu *.Mask) (tstamp c5c98b8a-f7ba-45e7-bc15-faf2e29423ce))
+)
