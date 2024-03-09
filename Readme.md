@@ -23,6 +23,7 @@ This project is very much inspired by [RC2014](https://rc2014.co.uk/) and Ben Ea
          - [Audio](#audio)
          - [Banked Memory #1](#banked-memory-1)
          - [Banked Memory #2](#banked-memory-2)
+         - [Serial Memory](#serial-memory)
          - [Buffered Memory](#buffered-memory)
          - [Dual-Port Memory](#dual-port-memory)
          - [Interrupt Controller](#interrupt-controller)
@@ -48,7 +49,7 @@ And so, starting with limited supplies, I opened the first box. The rest is hist
 
 ### Design
 
-The original proof-of-concept board was based around the same use of angled pin headers as on RC2014. However, bent pins were a constant source of problems, not to mention the lack in quantity. Dual row headers were also considered, but this came with it's own connector problem of being very hard to remove and the increased risk of more bent pins. The set dimensions of the 40-pin wide header made the boards clunky. This meant that a simply back plane would quickly fall outside the cheapest 10x10mm manufacturing pricing.
+The original proof-of-concept board was based around the same use of angled pin headers as on [RC2014](https://rc2014.co.uk/). However, bent pins were a constant source of problems, not to mention the lack in quantity. Dual row headers were also considered, but this came with it's own connector problem of being very hard to remove and the increased risk of more bent pins. The set dimensions of the 40-pin wide header made the boards clunky. This meant that a simple back plane would quickly fall outside the cheapest 10x10mm manufacturing pricing range.
 
 The final design is centered around two specific standards:
 
@@ -59,7 +60,7 @@ The final design is centered around two specific standards:
 
 - Board: 85.6x54 mm
 - Top corner radius: 3 mm
-- Bottom corner radium: 1 mm
+- Bottom corner radius: 1 mm
 - Edge connector width: 81 mm
 - Edge connector height: 300 mil
 - Edge connector chamfer: 0,5 mm
@@ -70,9 +71,13 @@ The final design is centered around two specific standards:
 - Work area center: 3,5 mm above card center
 - Preferred OSHW logo location: 9,5 mm from the top, 10 mm from the right edge
 
+<img src="Dimensions.svg" alt="Dimensions" width="150%" height="150%" title="Dimensions"></img>
+
 An optional 2 mm wide cut-out slot on pin 17/48 is taken into account in the designs of the individual boards, forcing the board in a single direction. While the current backplane connects these pins allowing the boards to be rotated, it should be noted that __all boards need to face the same direction__ for the system to operate correctly.
 
 #### Pinout
+
+> :exclamation: **Note:** eventhough the ISA slot is used, it is **not** electrically compatible with the PC ISA standard! **Do not plug in PC ISA 8-bit cards!**
 
 | Pin (Front) | Function | Pin (Back) | Function |
 |----|----|----|----|
@@ -108,7 +113,7 @@ An optional 2 mm wide cut-out slot on pin 17/48 is taken into account in the des
 | 30 | <span style="text-decoration: overline;">CS10</span> | 61 | +5V |
 | 31 | <span style="text-decoration: overline;">CS11</span> | 62 | GND |
 
-[^1]: For the two unused pins there are two possible options: serial Rx/Tx lines connected to the USB header on the back plane, or I^2^C.
+[^1]: For the two unused pins there are two possible options: serial Rx/Tx lines connected to the USB header on the back plane, or I<sup>2</sup>C.
 
 #### Memory Map
 
@@ -179,6 +184,10 @@ This board banks 2 MB of RAM in 256 8k blocks. This is specifically meant for <s
 ##### Banked Memory #2
 
 This board banks 8 MB in 256 32k blocks. This is specifically meant to occupy the RAM region.
+
+##### Serial Memory
+
+This board delivers up to 64K of 8 or 16-bit RAM in a 1-bit IO-space.
 
 ##### Buffered Memory
 
@@ -296,6 +305,6 @@ To be considered:
 | 8 | Tri-Color LED | [APGF1012GBRC-07](https://nl.mouser.com/ProductDetail/604-APGF1012GBRC-07) | € 0,987 |
 | 8 | RGB LED | [LRTBR48G-P9Q7-1+R7S5-26+NP-68](https://nl.mouser.com/ProductDetail/720-LRTBR48GP9A3521) | € 0,385 |
 | 1 | USB Type-C Connector | | € 0,63 + |
-| 1 | Parallel I^2^C Controller | [PCF8584T/2,512](https://nl.mouser.com/ProductDetail/771-PCF8584T2512) | € 6,58 |
+| 1 | Parallel I<sup>2</sup>C Controller | [PCF8584T/2,512](https://nl.mouser.com/ProductDetail/771-PCF8584T2512) | € 6,58 |
 
 ### Footnotes
